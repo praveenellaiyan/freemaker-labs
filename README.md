@@ -32,12 +32,23 @@ general-purpose programming language (like Java) using the templates.
 
 ## FreeMaker Template Concepts
 #### FTL Tags
+Tags are instructions to FreeMarker and it won't rendered in output. The name of these tags & user-defined tags starts with # and @ respectively.
 #### Directives
+Instructions to FreeMarker used in templates. They are invoked by FTL tags.
+````
+<#list Games as game>...</#list>
+<#import path_of_template as hash>
+<#include path>
+<#assign name=name_value type=type_value ... N>
+````
+Below are the types of Directives.<br>
+> Predefined directive : Directive defined by FreeMarker. Example- if, list, include<br>
+> User-defined directive : Directive that is defined by the user.
+
 #### Expressions
 #### Interpolation
 #### Namespace
 #### Node Variables
 #### Object-Wrappers
 #### Configurations
-#### Built-ins
 #### XML Processing
