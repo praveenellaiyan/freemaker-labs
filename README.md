@@ -33,7 +33,7 @@ general-purpose programming language (like Java) using the templates.
 ## FreeMaker Template Concepts
 #### FTL Tags
 Tags are instructions to FreeMarker and it won't rendered in output. The name of these tags & user-defined tags starts with # and @ respectively.
-#### Directives
+#### [Directives](https://freemarker.apache.org/docs/ref_directives.html)
 Instructions to FreeMarker used in templates. They are invoked by FTL tags.
 ````
 <#list Games as game>...</#list>
@@ -45,7 +45,29 @@ Below are the types of Directives.<br>
 > Predefined directive : Directive defined by FreeMarker. Example- if, list, include<br>
 > User-defined directive : Directive that is defined by the user.
 
-#### Expressions
+#### [Expressions](https://freemarker.apache.org/docs/dgui_template_exp.html#exp_cheatsheet)
+**Strings** String literals were enclosed in `'` or `"`. If at all string value contains quotes/braces etc then appropriate [escape sequence](https://freemarker.apache.org/docs/dgui_template_exp.html#dgui_template_exp_direct_string) is it should be used.
+> "\"quoted\" text" OR '\"quoted\" text'
+
+**[Numbers](https://freemarker.apache.org/docs/dgui_template_exp.html#dgui_template_exp_direct_string)** Numerical value represented without quoutes. Scientific notation is not supported yet.
+> 0.5, -2, 7.9, -2.5
+
+**[Booleans](https://freemarker.apache.org/docs/dgui_template_exp.html#dgui_template_exp_direct_boolean)** Boolean values are `true` or `false` and it should be represented without quotes.
+> true, false
+
+**[Sequences](https://freemarker.apache.org/docs/dgui_template_exp.html#dgui_template_exp_direct_seuqence)** Subvariables without have name separated by comma. It is enclosed in square brackets.
+> ["bat", "ball", "ground"]
+
+**[Ranges](https://freemarker.apache.org/docs/dgui_template_exp.html#dgui_template_exp_direct_ranges)** Ranges are like sequences, but they are created by specifying the range of whole numbers which it can contain. It is mainly used for iterating over numbers, slicing strings/sequences.
+> <#assign cricket = ["bat", "ball", "ground", "audience"]> <br>
+<#list cricket[0..1] as item>${item}</#list>
+
+**[Hashes](https://freemarker.apache.org/docs/dgui_template_exp.html#dgui_template_exp_direct_hash)** Key/Value pairs separated by comma enclosed in curly braces `{}`. Keys must be string and value can be of any type.
+> { "series": "Game of thrones", "favourite": "Drogon", "scenes": 10 }
+
+**[Built-ins](https://freemarker.apache.org/docs/dgui_template_exp.html#dgui_template_exp_builtin)** Functions that are added to the objects. Templates doesn't depend on the type of the underlying objects is one of the pros of FreeMaker.
+> player?upper_case <br> player?length <br> bowlers?size <br> player.keeper?string("Y", "N") <br> player?filter(it -> it.allrounder)
+
 #### Interpolation
 #### Namespace
 #### Node Variables
