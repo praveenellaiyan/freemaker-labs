@@ -89,6 +89,8 @@ Multiple import will create the namespace and run the template for only the firs
 Each template processing job has its own private set of namespaces and exists only for the short period until main template is rendered.
 
 #### Node Variables
+Represents node in a tree structure and primarily to handle XML documents. Node properties can be utilized either by methods of TemplateNodeModel `getChildNodes()`, `getChildNodes()` or node [built-ins](https://freemarker.apache.org/docs/ref_builtins_node.html) or visit & recurse macros.
+
 #### Object-Wrappers
 #### Configurations
 #### XML Processing
