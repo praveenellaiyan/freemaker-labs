@@ -6,11 +6,6 @@ FreeMarker is a Java-based template engine focused on generation of dynamic web 
 ## Why FreeMaker Template?
 - No dependency on servlets or HTTP or HTML.
 - Supoorts various Template loaders.
-  - ClassTemplateLoader
-  - FileTemplateLoader
-  - StringTemplateLoader
-  - URLTemplateLoader
-  - WebappTemplateLoader
 - Automatic object wrapping.
 - Xml processing
 - Auto-escaping and output formats
@@ -73,11 +68,11 @@ Below are the types of Directives.<br>
 **[Built-ins](https://freemarker.apache.org/docs/dgui_template_exp.html#dgui_template_exp_builtin)** Functions that are added to the objects. Templates doesn't depend on the type of the underlying objects is one of the pros of FreeMaker.
 > player?upper_case <br> player?length <br> bowlers?size <br> player.keeper?string("Y", "N") <br> player?filter(it -> it.allrounder)
 
-### Interpolation
+### [Interpolation](https://freemarker.apache.org/docs/dgui_template_valueinsertion.html)
 Used to evaluate the expression and convert it to string. By default the result would be automatically converted if return type is number, date/time, date-time value. If return type is boolean/sequence etc., then result needs to be manually converted.
 > ${expression} <br> ${IsBooelan?string("yes", "no")}.
 
-### Namespace
+### [Namespace](https://freemarker.apache.org/docs/dgui_misc_namespace.html)
 A set of template-made variables like [function, macro etc] is called a namespace. Namespace is used to avoid accidental name conflicts.
 > <#import "/lib/mobile.ftl" as m><br>
 Mobile wholesale...<br>
@@ -88,9 +83,39 @@ Namespace is identified by the path used in the import directive.
 Multiple import will create the namespace and run the template for only the first invocation. Following imports are assigned the same namespace to the variable specified.
 Each template processing job has its own private set of namespaces and exists only for the short period until main template is rendered.
 
-#### Node Variables
+### [Node Variables](https://freemarker.apache.org/docs/pgui_datamodel_node.html)
 Represents node in a tree structure and primarily to handle XML documents. Node properties can be utilized either by methods of TemplateNodeModel `getChildNodes()`, `getChildNodes()` or node [built-ins](https://freemarker.apache.org/docs/ref_builtins_node.html) or visit & recurse macros.
 
-#### Object-Wrappers
-#### Configurations
-#### XML Processing
+### [Object-Wrappers](https://freemarker.apache.org/docs/pgui_datamodel_objectWrapper.html)
+Mapping between Java objects and FTL's type done by ObjectWrapper. By default the configuration setting for object wrapper is DefaultObjectWrapper and it address most basic java types like List, Map, Sting etc. For customisation it is recommed to implement wrapper functionality by extending DefaultObjectWrapper.
+
+### [Configurations](https://freemarker.apache.org/docs/pgui_config.html)
+Configuration deals with common global, application level settings, shared variables and creation and caching template instances.
+
+**Settings** drives the behavior of freemaker. There are three layers of settings. Default will be from top most layer which is configuration and it can be overriden by subsequent layers template and environment.
+|Level|Layer|
+|---|---|
+|1|Configuration|
+|2|Template|
+|3|Environment|
+
+**Template Loaders** Responsible for loading ftl template provided abstract path like `/template/faq.ftl`. FreeMaker supports various types of template loaders, accordingly template will be located for rendering. This is also configured via configuration.
+|Type|
+|---|
+|ClassTemplateLoader|
+|FileTemplateLoader|
+|StringTemplateLoader|
+|URLTemplateLoader|
+|WebappTemplateLoader|
+
+**Error Handling** Exception could occur in certain scenario while configuration or loading template or IOExceptions. FreeMaker lets you to configure ExceptionHandling mechanism by defining custom implementation of TemplateExceptionHandler to handle runtime error gracefully. 
+
+**Auto Escaping** By default template doesn't associated to any output format so no auto escaping is performed. However it can be configured provided `recognize_standard_file_extensions = true` via configuration so that auto-escaping is dealt accordingly.
+|Extension|Output Format|
+|---|---|
+|.ftlh|HTML|
+|.ftlx|XML|
+
+### [XML Processing](https://freemarker.apache.org/docs/xgui.html)
+
+
