@@ -83,9 +83,6 @@ Namespace is identified by the path used in the import directive.
 Multiple import will create the namespace and run the template for only the first invocation. Following imports are assigned the same namespace to the variable specified.
 Each template processing job has its own private set of namespaces and exists only for the short period until main template is rendered.
 
-### [Node Variables](https://freemarker.apache.org/docs/pgui_datamodel_node.html)
-Represents node in a tree structure and primarily to handle XML documents. Node properties can be utilized either by methods of TemplateNodeModel `getChildNodes()`, `getChildNodes()` or node [built-ins](https://freemarker.apache.org/docs/ref_builtins_node.html) or visit & recurse macros.
-
 ### [Object-Wrappers](https://freemarker.apache.org/docs/pgui_datamodel_objectWrapper.html)
 Mapping between Java objects and FTL's type done by ObjectWrapper. By default the configuration setting for object wrapper is DefaultObjectWrapper and it address most basic java types like List, Map, Sting etc. For customisation it is recommed to implement wrapper functionality by extending DefaultObjectWrapper.
 
@@ -117,5 +114,12 @@ Configuration deals with common global, application level settings, shared varia
 |.ftlx|XML|
 
 ### [XML Processing](https://freemarker.apache.org/docs/xgui.html)
+Freemaker also supports transforming XML data into textual files [eg. HTML].
 
+**[Node Variables](https://freemarker.apache.org/docs/pgui_datamodel_node.html)**
+Represents node in a tree structure and primarily to handle XML documents. Node properties can be utilized either by methods of TemplateNodeModel `getChildNodes()`, `getChildNodes()` or node [built-ins](https://freemarker.apache.org/docs/ref_builtins_node.html) or visit & recurse macros.
+
+There are two ways to process the XML
+- [Imperative Processing](https://freemarker.apache.org/docs/xgui_imperative.html) - Define Freemaker template instance to traverse through different kind/level of nodes.
+- [Declarative Processing](https://freemarker.apache.org/docs/xgui_declarative.html) - Define how to handle the different kind of nodes and then freemaker traverse the tree of different kinds. Vital in case of complex XML schema.
 
