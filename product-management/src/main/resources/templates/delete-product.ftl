@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
+<#assign action = "Delete">
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>Delete Product</title>
+        <#include "/header.ftl">
         <link rel="stylesheet" type="text/css" href="/css/style.css"/>
     </head>
     <body>
-        <h1>Delete a Product:</h1>
         <a href="/products">Back to Product List</a>
         <br/>
         <#if errorMessage?has_content>

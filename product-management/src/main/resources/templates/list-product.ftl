@@ -1,13 +1,12 @@
 <!DOCTYPE HTML>
+<#assign action = "List">
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>Product List</title>
+        <#include "/header.ftl">
         <link rel="stylesheet" type="text/css" href="/css/style.css"/>
     </head>
     <body>
-        <h1>Product List</h1>
-        
         <div>
             <nobr>
                 <a href="/products/add">Add Product</a> |

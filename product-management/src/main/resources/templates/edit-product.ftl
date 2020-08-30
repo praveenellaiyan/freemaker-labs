@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
+<#assign action = "Edit">
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>Edit Product</title>
+        <#include "/header.ftl">
         <link rel="stylesheet" type="text/css" href="/css/style.css"/>
     </head>
     <body>
-        <h1>Edit a Product:</h1>
         <a href="/products">Back to Product List</a>
         <br/>
         <#if errorMessage?has_content>
